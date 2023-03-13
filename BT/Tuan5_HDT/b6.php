@@ -72,7 +72,7 @@ $id = $_GET['id'] ?? 0;
             <div class="container">
                 <img class="img" src="/BT/Tuan5_HDT/img/<?php echo $item->anh ?>" alt="">
                 <div class="card-header" style="color: red; font-weight: bold"><span id="nd"><?php echo $item->tieuDe ?></span></div>
-                <div class="card-body"><?php echo $item->noiDung ?><a href="/BT/Tuan5_HDT/b6.php?id=<?php echo strlen($item->stt) > 1 ? substr($item->stt, 3) : $item->stt ?>">[Xem chi tiết...]</a></div>
+                <div class="card-body"><?php echo $item->noiDung ?><a href="b6.php?id=<?php echo strlen($item->stt) > 1 ? substr($item->stt, 3) : $item->stt ?>">[Xem chi tiết...]</a></div>
             </div>
         <?php
         }
@@ -82,7 +82,7 @@ $id = $_GET['id'] ?? 0;
             <div class="container">
                 <img class="img" src="/BT/Tuan5_HDT/img/<?php echo $item->anh ?>" alt="">
                 <div class="card-header" style="color: red; font-weight: bold"><span id="nd"><?php echo $item->tieuDe ?></span></div>
-                <div class="card-body"><?php echo  $id == (strlen($item->stt) > 1 ? substr($item->stt, 3) : $item->stt) ? $item->noiDung : substr($item->noiDung, 0, 355) ?><a href="/BT/Tuan5_HDT/b6.php?id=<?php echo strlen($item->stt) > 1 ? substr($item->stt, 3) : $item->stt ?>">[Xem chi tiết...]</a></div>
+                <div class="card-body"><?php echo  $id == (strlen($item->stt) > 1 ? substr($item->stt, 3) : $item->stt) ? $item->noiDung : substr($item->noiDung, 0, 355) ?><a href="b6.php?id=<?php echo strlen($item->stt) > 1 ? substr($item->stt, 3) : $item->stt ?>">[Xem chi tiết...]</a></div>
             </div>
     <?php
         }
