@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SPs>
+    <SP ID="1" Hinh="SamSung1.jpg">SamSung</SP>
+    <SP ID="2" Hinh="Iphone1.jpg">Iphone</SP>
+    <SP ID="3" Hinh="Oppo1.jpg">Oppo</SP>
+    <SP ID="4" Hinh="Bphone1.jpg">Bphone</SP>
+    <SP ID="5" Hinh="Nokia1.jpg">Nokia</SP>
+    <SP ID="6" Hinh="Bakery1.jpg">Bakery</SP>
+</SPs>
