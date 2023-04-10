@@ -1,40 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <style>
-        .img {
-            border-radius: 50%;
-            width: 60px;
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+  </head>
+  <body>
+    <script>
+      let explosions = [];
+      
+      function setup() {
+        createCanvas(windowWidth, windowHeight);
+        frameRate(30);
+        noStroke();
+      }
+      
+      function draw() {
+        background(0);
+        for (let i = 0; i < explosions.length; i++) {
+          explosions[i].update();
+          explosions[i].draw();
         }
-
-        .nav-ico {
-            padding: 10px;
+      }
+      
+      function startExplosion(x, y) {
+        let explosion = new Explosion(x, y);
+        explosions.push(explosion);
+      }
+      
+      function endExplosion() {
+        // Optional: Add any clean-up logic here
+      }
+      
+      function mousePressed() {
+        startExplosion(mouseX, mouseY);
+      }
+      
+      function mouseReleased() {
+        endExplosion();
+      }
+      
+      function touchStarted() {
+        startExplosion(touchX, touchY);
+      }
+      
+      function touchEnded() {
+        endExplosion();
+      }
+      
+      function touchMoved() {
+        // Prevent default touch event behavior
+        return false;
+      }
+      
+      class Explosion {
+        constructor(x, y) {
+          this.x = x;
+          this.y = y;
+          this.size = 10;
+          this.opacity = 255;
+          this.r = random(0, 255);
+          this.g = random(0, 255);
+          this.b = random(0, 255);
         }
-
-        .nav-item {
-            padding: 10px;
-            text-align: center;
-            align-self: center;
-            text-transform: uppercase;
-            display: inherit;
-        }
-    </style>
-    <title>Document</title>
-</head>
-
-<body>
-    <div class="container">
         
-    </div>
-</body>
-    
+        update() {
+          this.size += 30;
+          this.opacity -= 10;
+        }
+        
+        draw() {
+          fill(this.r, this.g, this.b, this.opacity);
+          ellipse(this.x, this.y, this.size, this.size);
+          if (this.size >= 800) {
+            let index = explosions.indexOf(this);
+            explosions.splice(index, 1);
+          }
+        }
+      }
+    </script>
+  </body>
 </html>
