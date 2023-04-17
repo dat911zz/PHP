@@ -13,6 +13,7 @@ function readF_arr($fname)
     $f = fopen($fname, 'r');
     while (!feof($f)) {
         $text = fgets($f);
+        $arr[]=
         array_push($arr, $text);
         echo "<script>console.log(".$text.")</script>";
     }
@@ -30,5 +31,16 @@ function readXML($path){
     $root = $doc->documentElement;
     //Truy xuất tập hợp các nút con
     return $root;
+}
+function executeReader($db, $user, $pass){
+    $pdo = new PDO("mysql:host=localhost;dbname=".$db."", "".$user."", "".$pass."");
+    $pdo->query("set names utf8");
+    $sql = "select * from khach_hang";
+    $st = $pdo->prepare($sql);
+    $st->execute();
+    if($st->rowCount() > 0){
+      return $st->fetchAll(PDO::FETCH_ASSOC);
+    }
+    return [];
 }
 ?>
